@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "fakerphp/faker": "^1.9.1",
         "filament/filament": "^2.15",
         "filament/spatie-laravel-media-library-plugin": "^2.16",
         "guzzlehttp/guzzle": "^7.2",
@@ -21,7 +22,6 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
         "barryvdh/laravel-ide-helper": "^2.12",
-        "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
