@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasAvatar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,7 +15,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable implements HasMedia, FilamentUser, HasAvatar
 {
     use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
 
@@ -46,6 +49,26 @@ class User extends Authenticatable implements HasMedia
         'email_verified_at' => 'datetime',
     ];
 
+     /**
+      * getFilamentAvatarUrl
+      *
+      * @return string
+      */
+     public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->avatar_url;
+    }
+
+     /**
+      * canAccessFilament
+      *
+      * @return bool
+      */
+     public function canAccessFilament(): bool
+    {
+        return str_ends_with($this->email, '@hotzingo.com');
+    }
+
     /**
      * registerMediaConversions
      *
@@ -67,6 +90,6 @@ class User extends Authenticatable implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('avatars')
-            ->useFallbackUrl('');
+            ->useFallbackUrl('/storage/logo/Chameleon.png');
     }
 }

@@ -42,6 +42,6 @@ class Product extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('products')
-            ->useFallbackUrl('');
+            ->useFallbackUrl('/storage/logo/Chameleon.png');
     }
 }

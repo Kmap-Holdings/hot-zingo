@@ -6,6 +6,7 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -38,6 +39,7 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                SpatieMediaLibraryFileUpload::make('image')->collection('products'),
                 Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TextColumn::make('short_description'),
                 Tables\Columns\TextColumn::make('long_description'),
@@ -58,11 +60,11 @@ class ProductResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ManageProducts::route('/'),
         ];
-    }    
+    }
 }
