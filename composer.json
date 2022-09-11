@@ -10,11 +10,13 @@
     "require": {
         "php": "^8.0.2",
         "filament/filament": "^2.15",
+        "filament/spatie-laravel-media-library-plugin": "^2.16",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/breeze": "^1.13",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "spatie/laravel-medialibrary": "^10.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
